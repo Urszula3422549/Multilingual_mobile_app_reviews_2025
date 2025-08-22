@@ -52,7 +52,60 @@ from apps_usage
 
 Można zobaczyć, że dataset uwzględnia 24 kraje oraz 41 aplikacji.
 
-na początku można zobaczyć w którym kraju dokonano najwięcej recenzji.
+na początku można zobaczyć top 10 najbardziej zrecenzowanych aplikacji
+
+```sql
+select 
+app_name
+,count(distinct review_id) as number_of_reviews
+from apps_usage
+group by app_name
+order by number_of_reviews desc
+limit 10
+
+
+```
+<img width="364" height="367" alt="image" src="https://github.com/user-attachments/assets/818cc9ea-0efe-4a23-a0db-29a67a9cf6f1" />
+
+
+
+Z tabeli wynika, że najczęściej ocenianą aplikacją jest reddit oraz Pinterest ( aż 80 wystąpień)
+
+```sql
+select 
+user_country as country
+,app_name
+,count(distinct review_id) as number_of_reviews
+from apps_usage
+group by app_name, user_country
+order by number_of_reviews desc
+limit 10
+```
+<img width="453" height="367" alt="image" src="https://github.com/user-attachments/assets/b8652f69-8f94-4b7c-8531-9c8555233449" />
+
+```sql
+select 
+user_country as country
+,app_name
+,count(distinct review_id) as number_of_reviews
+from apps_usage
+group by app_name, country
+order by number_of_reviews desc
+limit 10
+
+```
+
+<img width="453" height="366" alt="image" src="https://github.com/user-attachments/assets/4bab6a40-6384-4ede-aed5-a17f748310de" />
+
+W odniesieniu do kraju to najwięcej ocen otrzymał Microsoft Office od użytkowników z Australii.
+
+
+
+
+
+
+
+
 
 
 
