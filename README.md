@@ -99,6 +99,22 @@ limit 10
 
 W odniesieniu do kraju to najwięcej ocen otrzymał Microsoft Office od użytkowników z Australii.
 
+```sql
+select 
+app_name
+,rating
+,count(rating) number_of_rating
+from apps_usage
+where rating is not null
+group by app_name, rating
+order by rating desc, number_of_rating desc
+```
+<img width="480" height="428" alt="image" src="https://github.com/user-attachments/assets/bfc05ae9-a37b-4e67-b521-886a83a92ea9" />
+
+Aplikacjami z najczęściej występującą najwyższą notą są Lyft oraz Zoom.
+
+
+
 
 
 
